@@ -1,0 +1,40 @@
+{{- $url := replace .Permalink ( printf "%s" ( "/" | absURL ) ) "" -}}
+{{- $.Scratch.Add "path" ( "/" | absURL ) -}}
+{{- $.Scratch.Add "breadcrumb" (slice (dict "url" ( "/" | absURL ) "name" "home" "position" 1 )) -}}
+{{- range $index, $element := split $url "/" -}}
+{{- $.Scratch.Add "path" $element -}}
+{{- $.Scratch.Add "path" "/" -}}
+{{- if ne $element "" -}}
+{{- $.Scratch.Add "breadcrumb" (slice (dict "url" ($.Scratch.Get "path") "name" . "position" (add $index 2))) -}}
+{{- end -}}
+{{- end -}}
+<nav class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+  {{- $length := len ($.Scratch.Get "breadcrumb") -}}
+  {{- range $.Scratch.Get "breadcrumb" -}}
+  {{- if eq .position 1 -}}
+  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{{ .url }}">
+      <i class="material-icons">home</i>
+      <meta itemprop="name" content="{{ .name }}" />
+    </a>
+    <meta itemprop="position" content="{{ .position }}" />
+  </li>
+  {{- else -}}
+  {{- if eq ( (int .position) ) $length -}}
+  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{{ .url }}">
+      <span itemprop="name">{{ .name }}</span>
+    </a>
+    <meta itemprop="position" content="{{ .position }}" />
+  </li>
+  {{- else -}}
+  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <a itemscope itemtype="http://schema.org/Thing" itemprop="item" class="active" href="{{ .url }}">
+      <span itemprop="name">{{ .name }}</span>
+    </a>
+    <meta itemprop="position" content="{{ .position }}" />
+  </li>
+  {{- end -}}
+  {{- end -}}
+  {{- end -}}
+</nav>
