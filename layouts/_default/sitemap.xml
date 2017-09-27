@@ -1,6 +1,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   {{ range .Data.Pages -}}
-  {{ if .Params.sitemap true -}}
+  {{- if (.Params.sitemap) | or (and (or (not (isset .Params "sitemap")) (eq .Params.sitemap nil)) (.Site.Params.sitemap)) -}}
   <url>
     <loc>{{ .Permalink }}</loc>
     {{ if not .Lastmod.IsZero -}}
