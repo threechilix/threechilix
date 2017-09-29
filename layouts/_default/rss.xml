@@ -13,6 +13,7 @@
         {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
     {{ end }}
     {{ range .Data.Pages }}
+    {{- if (.Params.sitemap) | or (and (or (not (isset .Params "sitemap")) (eq .Params.sitemap nil)) (.Site.Params.sitemap)) -}}
     <item>
       <title>{{ .Title }}</title>
       <link>{{ .Permalink }}</link>
@@ -21,6 +22,7 @@
       <guid>{{ .Permalink }}</guid>
       <description>{{ .Summary | html }}</description>
     </item>
+    {{ end }}
     {{ end }}
   </channel>
 </rss>
