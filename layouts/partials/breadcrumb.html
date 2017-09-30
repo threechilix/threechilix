@@ -1,40 +1,30 @@
-{{- $url := replace .Permalink ( printf "%s" ( "/" | absURL ) ) "" -}}
-{{- $.Scratch.Add "path" ( "/" | absURL ) -}}
-{{- $.Scratch.Add "breadcrumb" (slice (dict "url" ( "/" | absURL ) "name" "home" "position" 1 )) -}}
-{{- range $index, $element := split $url "/" -}}
-{{- $.Scratch.Add "path" $element -}}
-{{- $.Scratch.Add "path" "/" -}}
-{{- if ne $element "" -}}
-{{- $.Scratch.Add "breadcrumb" (slice (dict "url" ($.Scratch.Get "path") "name" . "position" (add $index 2))) -}}
-{{- end -}}
-{{- end -}}
 <nav class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
-  {{- $length := len ($.Scratch.Get "breadcrumb") -}}
-  {{- range $.Scratch.Get "breadcrumb" -}}
-  {{- if eq .position 1 -}}
+
   <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{{ .url }}">
+    <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{{ .URL | absURL }}">
       <i class="material-icons">home</i>
-      <meta itemprop="name" content="{{ .name }}" />
+      <meta itemprop="name" content="Home" />
     </a>
-    <meta itemprop="position" content="{{ .position }}" />
+    <meta itemprop="position" content="1" />
   </li>
-  {{- else -}}
-  {{- if eq ( (int .position) ) $length -}}
   <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{{ .url }}">
-      <span itemprop="name">{{ .name }}</span>
+    <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{{ lower .Section | urlize | absURL }}">
+      <span itemprop="name">{{ .Section | humanize | title }}</span>
     </a>
-    <meta itemprop="position" content="{{ .position }}" />
+    <meta itemprop="position" content="2" />
   </li>
-  {{- else -}}
+  {{ range .Params.categories }}
   <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <a itemscope itemtype="http://schema.org/Thing" itemprop="item" class="active" href="{{ .url }}">
-      <span itemprop="name">{{ .name }}</span>
+    <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{{ "categories" | absURL }}/{{ . | urlize }}">
+      <span itemprop="name">{{ . | humanize | title }}</span>
     </a>
-    <meta itemprop="position" content="{{ .position }}" />
+    <meta itemprop="position" content="3" />
   </li>
-  {{- end -}}
-  {{- end -}}
-  {{- end -}}
+  {{ end }}
+  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <a itemscope itemtype="http://schema.org/Thing" itemprop="item" class="active" href="{{ .Permalink }}">
+      <span itemprop="name">{{ .Title | humanize }}</span>
+    </a>
+    <meta itemprop="position" content="4" />
+  </li>
 </nav>
