@@ -1,6 +1,6 @@
 {{ if gt .Paginator.TotalPages 1 -}}
 <nav>
-  <ul class='pagination' role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+  <ul class='pagination pagination-danger' role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
     {{ with .Paginator.First -}}
     <li><a itemprop="url" class='page-link' href='{{ .URL }}'><span itemprop="name">{{ i18n "first" }}</span></a></li>
     {{- end }}

@@ -777,36 +777,6 @@ aside a {
 	border-radius: 50%;
 	box-shadow: 0 1px 4px 0 rgba(0,0,0,0.30);
 }
-.shorten-box {
-	font-size:100%;
-	font-weight:bold;
-	color:#666!important;
-	margin:10px 0
-}
-#output { display:inline-block;
-}
-.shorten-text {
-	display:inline-block;
-	margin-right:5px;
-	border:1px solid transparent;
-	line-height:1;
-	padding:5px 0;
-}
-.output{
-	display:inline-block;
-	color:#000;
-	cursor:pointer;
-	background:#f8f8f8;
-	border:1px solid #ccc;
-	border-radius:3px;
-	line-height:1;
-	padding:5px 8px;
-	margin:0;
-	box-shadow: inset 0px 0px 1px rgba(0,0,0,.08);
-}
-.output:focus,.output:active{
-	outline:none
-}
 #gt_comit,
 #gt_iis {
 	color: #999;
