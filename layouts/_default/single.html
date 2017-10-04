@@ -2,10 +2,10 @@
 {{ define "class" }}<div class="wrapper">{{ end }}
 {{ define "script1" }}{{ if .Params.css }}<link href="{{ .Params.css | absURL }}" rel="stylesheet">{{ end }}{{ end }}
 {{ define "script2" }}{{ if .Params.js }}<script src="{{ .Params.js | absURL }}"></script>{{ end }}{{ end }}
-{{ define "main" }}
-{{ if isset .Params "id" }}
+{{ define "main" -}}
+{{ if isset .Params "id" -}}
 {{ partial .Params.id . }}
-{{ else }}
+{{- else }}
 <div class="header burem" style="background-image: url('{{ .Params.images | absURL }}');">
   <div class="container">
     <div class="row">
@@ -27,5 +27,5 @@
     </div>
   </div>
 </div>
-{{ end }}
-{{ end }}
+{{- end }}
+{{- end }}
