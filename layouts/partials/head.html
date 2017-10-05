@@ -60,10 +60,7 @@
   {{- end }}
   <link rel="canonical" href="{{ .URL | absURL }}" />
   <script type='application/ld+json'>
-    {"@context":"http:\/\/schema.org","@type":"WebSite","url":"{{ .Site.BaseURL }}","name":"{{ .Site.Params.name }}.xyz","alternateName":"{{ .Site.Params.name }}","potentialAction":{"@type":"SearchAction","target":"{{ "search" | absURL }}?&q={search_term_string}","query-input":"required name=search_term_string"}}
-  </script>
-  <script type='application/ld+json'>
-    {"@context":"http:\/\/schema.org","@type":"Organization","url":"{{ .Site.BaseURL }}","sameAs":["https:\/\/www.facebook.com\/{{ .Site.Author.facebook }}","https:\/\/instagram.com\/{{ .Site.Author.instagram }}","https:\/\/plus.google.com\/+{{ .Site.Author.googleplus }}","https:\/\/www.youtube.com\/{{ .Site.Author.youtube }}","https:\/\/twitter.com\/{{ .Site.Author.twitter }}"],"name":"{{ .Site.Params.name }}","logo":"{{ .Site.Params.logo | absURL }}"}
+    { "@context":"http:\/\/schema.org", "@type":"WebSite", "url":"{{ .Site.BaseURL }}", "name":"{{ .Site.Params.name }}.xyz", "alternateName":"{{ .Site.Params.name }}", "potentialAction":{ "@type":"SearchAction", "target":"{{ "search" | absURL }}?&q={search_term_string}", "query-input":"required name=search_term_string" }, "sameAs": [ "http://www.facebook.com/threechilix", "http://instagram.com/three_chilix", "http://www.linkedin.com/in/threechilix", "http://plus.google.com/+threechilix", "http://youtube.com/c/threechilix", "http://twitter.com/threechilix" ] }
   </script>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">

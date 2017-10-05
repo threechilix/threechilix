@@ -236,23 +236,6 @@ pre.prettyprint{
 	color: #fff;
 }
 
-.profile-page .header {
-	height: auto
-}
-
-.profile-page .profile {
-	margin-top: 100px
-}
-
-.profile-page .post,
-.profile-page .content {
-	margin: 0px;
-}
-
-.profile-page .profile img {
-  margin: 0px auto 0;
-}
-
 .findme-area{
     margin-top: 50px;
 }
