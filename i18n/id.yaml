@@ -11,7 +11,9 @@
   translation: "First"
 - id: last
   translation: "Last"
-
+# Home
+- id: pagemessage
+  translation: "Keep calm and love programming."
 # Search
 - id: search
   translation: "cari..."
@@ -22,7 +24,6 @@
   translation: "404 error !"
 - id: hello
   translation: "Hello, World!"
-
 # Contact
 - id: contact
   translation: "Kirim Pesan"
