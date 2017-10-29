@@ -5,7 +5,7 @@
     <li><a itemprop="url" class='page-link' href='{{ .URL }}'><span itemprop="name">{{ i18n "first" }}</span></a></li>
     {{- end }}
     {{ with .Paginator.Prev -}}
-    <li><a itemprop="url" class='page-link' href='{{ .URL }}'><span itemprop="name">{{ i18n "prev" }}</span></a></li>
+    <li><a itemprop="url" class='page-link' href='{{ .URL }}'><span itemprop="name">{{ i18n "olderPosts" }}</span></a></li>
     {{- end }}
     {{- range .Paginator.Pagers -}}
     {{ if eq . $.Paginator -}}

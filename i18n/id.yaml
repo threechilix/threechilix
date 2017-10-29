@@ -11,9 +11,13 @@
   translation: "First"
 - id: last
   translation: "Last"
+- id: newerPosts
+  translation: "Newer Posts"
+- id: olderPosts
+  translation: "Older Posts"
 # Home
 - id: pagemessage
-  translation: "Keep calm and love programming."
+  translation: "Keep calm and love graphic designer."
 # Search
 - id: search
   translation: "cari..."

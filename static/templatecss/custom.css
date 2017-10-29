@@ -946,3 +946,8 @@ a.button-author:hover {
         margin-right: 15px;
     }
 }
+.alert b {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 17px;
+}
